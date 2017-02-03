@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Author : Andrew Hild
+# Developed 02/2017
+# Enjoy! SDG
+
+SITE=$1
+OUTPUT=$2
+
+if [ $# -gt 1 ];
+then
+wget -O $OUTPUT $SITE
+else
+echo $SITE
+wget $SITE
+fi
