@@ -6,10 +6,17 @@
 
 SITE=$1
 OUTPUT=$2
+EXT=$3
+tagre="<[^>]+>"
+tmp=noot
 
 if [ $# -gt 1 ];
 then
+touch $OUTPUT
+touch $tmp
 wget -O $OUTPUT $SITE
+sed -r '/</,/>/ s/*//g' <$OUTPUT >$tmp
+mv $tmp $OUTPUT
 else
 echo $SITE
 wget $SITE
