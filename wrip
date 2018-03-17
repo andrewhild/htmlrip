@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Author : Andrew Hild
-# Developed 02/2017
+# Developed 03/2018
 # Enjoy! SDG
 
 SITE=$1
 OUTPUT=$2
 EXT=$3
-tagre="<[^>]+>"
+tagre="<[^>]+>\n*"
 tmp=noot
 
 if [ $# -gt 1 ];
@@ -15,7 +15,7 @@ then
 touch $OUTPUT
 touch $tmp
 wget -O $OUTPUT $SITE
-sed -r '/</,/>/ s/*//g' <$OUTPUT >$tmp
+sed -r 's/'$tagre'//g' <$OUTPUT >$tmp
 mv $tmp $OUTPUT
 else
 echo $SITE
