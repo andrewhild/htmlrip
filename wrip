@@ -6,7 +6,6 @@
 
 SITE=$1
 OUTPUT=$2
-EXT=$3
 tagre="<[^>]+>\n*"
 tmp=noot
 
@@ -18,6 +17,5 @@ wget -O $OUTPUT $SITE
 sed -r 's/'$tagre'//g' <$OUTPUT >$tmp
 mv $tmp $OUTPUT
 else
-echo $SITE
-wget $SITE
+echo No output file specified.
 fi
